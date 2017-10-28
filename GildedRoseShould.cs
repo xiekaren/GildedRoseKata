@@ -76,6 +76,35 @@ namespace csharp
             app.UpdateQuality();
             Assert.AreEqual(30, items[0].Quality);
         }
+        //        - "Backstage passes", like aged brie, increases in Quality as its SellIn value approaches;
+        //        Quality increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but
+        //        Quality drops to 0 after the concert
+
+        [Test]
+        public void IncreaseQualityBy3WhenSellByDateIs5DaysOrLessForBackstagePass()
+        {
+            IList<Item> items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 5, Quality = 0 } };
+            var app = new GildedRose(items);
+            app.UpdateQuality();
+            Assert.AreEqual(3, items[0].Quality);
+        }
+
+        [Test]
+        public void IncreaseQualityBy2WhenSellByDateIs10DaysOrLessForBackstagePass()
+        {
+            IList<Item> items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 10, Quality = 0 } };
+            var app = new GildedRose(items);
+            app.UpdateQuality();
+            Assert.AreEqual(2, items[0].Quality);
+        }
+        [Test]
+        public void DropQualityToZeroWhenSellByDateIsPassedForBackstagePass()
+        {
+            IList<Item> items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 0, Quality = 50 } };
+            var app = new GildedRose(items);
+            app.UpdateQuality();
+            Assert.AreEqual(0, items[0].Quality);
+        }
 
     }
 }
