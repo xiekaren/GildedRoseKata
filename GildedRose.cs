@@ -9,7 +9,10 @@ namespace csharp
         {
             this.Items = Items;
         }
-
+        //TODO: Extract out degrade rate
+        //TODO: Extract out item names to constants - sulfuras is sulfuras hand of ragnaros
+        //TODO: Extract out min and max quality
+        
         public void UpdateQuality()
         {
             for (var i = 0; i < Items.Count; i++)
