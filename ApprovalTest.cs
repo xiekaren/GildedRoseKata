@@ -8,7 +8,7 @@ using System.Text;
 namespace csharp
 {
     [TestFixture]
-    [UseReporter(typeof(NUnitReporter))]
+    [UseReporter(typeof(DiffReporter))]
     public class ApprovalTest
     {
         [Test]
