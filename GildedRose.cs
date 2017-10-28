@@ -4,7 +4,7 @@ namespace csharp
 {
     public class GildedRose
     {
-        readonly IList<Item> _items;
+        private readonly IList<Item> _items;
         public GildedRose(IList<Item> items)
         {
             this._items = items;
@@ -15,7 +15,7 @@ namespace csharp
         
         public void UpdateQuality()
         {
-            foreach (Item item in _items)
+            foreach (var item in _items)
             {
                 if (item.Name != "Aged Brie" && item.Name != "Backstage passes to a TAFKAL80ETC concert")
                 {
