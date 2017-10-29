@@ -61,20 +61,21 @@ namespace csharp
         }
 
         [Test]
-        public void NotIncreaseQualityMoreThan50()
+        public void NotIncreaseQualityMoreThan50IfItemIsNotSulfuras()
         {
             IList<Item> items = new List<Item> { new Item { Name = "Aged Brie", SellIn = 0, Quality = 50 } };
             var app = new GildedRose(items);
             app.UpdateQuality();
             Assert.AreEqual(50, items[0].Quality);
         }
+
         [Test]
         public void NotChangeQualityIfItemIsSulfurasHandOfRagnaros()
         {
-            IList<Item> items = new List<Item> { new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = 0, Quality = 30 } };
+            IList<Item> items = new List<Item> { new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = 0, Quality = 80 } };
             var app = new GildedRose(items);
             app.UpdateQuality();
-            Assert.AreEqual(30, items[0].Quality);
+            Assert.AreEqual(80, items[0].Quality);
         }
 
         [Test]
