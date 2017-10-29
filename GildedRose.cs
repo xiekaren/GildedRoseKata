@@ -51,6 +51,30 @@ namespace csharp
                 return;
             }
 
+            if (item.Name == BackstagePasses)
+            {
+                if (item.SellIn < 6)
+                {
+                    item.Quality = IncreaseQualityByAmount(item, 3);
+                }
+                else if (item.SellIn < 11)
+                {
+                    item.Quality = IncreaseQualityByAmount(item, 2);
+                }
+                else if (item.SellIn >= 11)
+                {
+                    item.Quality = IncreaseQualityByAmount(item, 1);
+                }
+
+                item.SellIn = item.SellIn - 1;
+
+                if (item.SellIn < 0)
+                {
+                    item.Quality = DecreaseQualityByAmount(item, item.Quality);
+                }
+                return;
+            }
+
             if (item.Name != BackstagePasses)
             {
                 item.Quality = DecreaseQualityByAmount(item, 1);

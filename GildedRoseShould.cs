@@ -96,6 +96,16 @@ namespace csharp
             app.UpdateQuality();
             Assert.AreEqual(2, items[0].Quality);
         }
+
+        [Test]
+        public void IncreaseQualityBy1WhenSellByDateIs11DaysOrMoreForBackstagePass()
+        {
+            IList<Item> items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 11, Quality = 0 } };
+            var app = new GildedRose(items);
+            app.UpdateQuality();
+            Assert.AreEqual(1, items[0].Quality);
+        }
+
         [Test]
         public void DropQualityToZeroWhenSellByDateIsPassedForBackstagePass()
         {
