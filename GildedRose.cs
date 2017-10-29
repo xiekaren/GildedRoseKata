@@ -6,45 +6,21 @@ namespace csharp
     public class GildedRose
     {
         private readonly IList<Item> _items;
+        private readonly ItemUpdaterFactory _itemUpdaterFactory;
 
-        private const string Sulfuras = "Sulfuras, Hand of Ragnaros";
-        private const string AgedBrie = "Aged Brie";
-        private const string BackstagePasses = "Backstage passes to a TAFKAL80ETC concert";
-
-        public GildedRose(IList<Item> items)
+        public GildedRose(IList<Item> items, ItemUpdaterFactory itemUpdaterFactory)
         {
-            this._items = items;
+            _items = items;
+            _itemUpdaterFactory = itemUpdaterFactory;
         }
 
-        public void UpdateQuality()
+        public void UpdateItems()
         {
             foreach (var item in _items)
             {
-                UpdateQuality(item);
+                var itemUpdater = _itemUpdaterFactory.GetUpdaterFor(item);
+                itemUpdater.Update(item);
             }
-        }
-
-        private void UpdateQuality(Item item)
-        {
-            switch (item.Name)
-            {
-                case Sulfuras:
-                    return;
-                case AgedBrie:
-                    UpdateItem(item, new AgedBrieItemUpdater());
-                    return;
-                case BackstagePasses:
-                    UpdateItem(item, new BackstagePassesItemUpdater());
-                    return;
-                default:
-                    UpdateItem(item, new DefaultItemUpdater());
-                    return;
-            }
-        }
-
-        private void UpdateItem(Item item, ItemUpdater updater)
-        {
-            updater.Update(item);
-        }    
+        } 
     }
 }
