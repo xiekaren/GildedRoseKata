@@ -5,14 +5,18 @@ namespace csharp
     public class GildedRose
     {
         private readonly IList<Item> _items;
+
+        private const string Sulfuras = "Sulfuras, Hand of Ragnaros";
+        private const string AgedBrie = "Aged Brie";
+        private const string BackstagePasses = "Backstage passes to a TAFKAL80ETC concert";
+
         public GildedRose(IList<Item> items)
         {
             this._items = items;
         }
         //TODO: Extract out degrade rate
-        //TODO: Extract out item names to constants - sulfuras is sulfuras hand of ragnaros
         //TODO: Extract out min and max quality
-        
+
         public void UpdateQuality()
         {
             foreach (var item in _items)
@@ -23,14 +27,16 @@ namespace csharp
 
         private void UpdateQuality(Item item)
         {
-            if (item.Name != "Aged Brie" && item.Name != "Backstage passes to a TAFKAL80ETC concert")
+            if (item.Name == Sulfuras)
+            {
+                return;
+            }
+
+            if (item.Name != AgedBrie && item.Name != BackstagePasses)
             {
                 if (item.Quality > 0)
                 {
-                    if (item.Name != "Sulfuras, Hand of Ragnaros")
-                    {
-                        item.Quality = item.Quality - 1;
-                    }
+                    item.Quality = item.Quality - 1;
                 }
             }
             else
@@ -39,7 +45,7 @@ namespace csharp
                 {
                     item.Quality = item.Quality + 1;
 
-                    if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
+                    if (item.Name == BackstagePasses)
                     {
                         if (item.SellIn < 11)
                         {
@@ -60,23 +66,17 @@ namespace csharp
                 }
             }
 
-            if (item.Name != "Sulfuras, Hand of Ragnaros")
-            {
-                item.SellIn = item.SellIn - 1;
-            }
+            item.SellIn = item.SellIn - 1;
 
             if (item.SellIn < 0)
             {
-                if (item.Name != "Aged Brie")
+                if (item.Name != AgedBrie)
                 {
-                    if (item.Name != "Backstage passes to a TAFKAL80ETC concert")
+                    if (item.Name != BackstagePasses)
                     {
                         if (item.Quality > 0)
                         {
-                            if (item.Name != "Sulfuras, Hand of Ragnaros")
-                            {
-                                item.Quality = item.Quality - 1;
-                            }
+                            item.Quality = item.Quality - 1;
                         }
                     }
                     else
