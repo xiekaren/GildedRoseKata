@@ -38,40 +38,13 @@ namespace csharp
 
             if (item.Name == AgedBrie)
             {
-                item.SellIn = item.SellIn - 1;
-
-                if (item.SellIn >= 0)
-                {
-                    item.Quality = IncreaseQualityByAmount(item, 1);
-                }
-                else
-                {
-                    item.Quality = IncreaseQualityByAmount(item, 2);
-                }
+                UpdateAgedBrie(item);
                 return;
             }
 
             if (item.Name == BackstagePasses)
             {
-                if (item.SellIn < 6)
-                {
-                    item.Quality = IncreaseQualityByAmount(item, 3);
-                }
-                else if (item.SellIn < 11)
-                {
-                    item.Quality = IncreaseQualityByAmount(item, 2);
-                }
-                else if (item.SellIn >= 11)
-                {
-                    item.Quality = IncreaseQualityByAmount(item, 1);
-                }
-
-                item.SellIn = item.SellIn - 1;
-
-                if (item.SellIn < 0)
-                {
-                    item.Quality = DecreaseQualityByAmount(item, item.Quality);
-                }
+                UpdateBackstagePasses(item);
                 return;
             }
 
@@ -82,6 +55,43 @@ namespace csharp
             if (item.SellIn < 0)
             {
                item.Quality = DecreaseQualityByAmount(item, 1);
+            }
+        }
+
+        private void UpdateAgedBrie(Item agedBrie)
+        {
+            agedBrie.SellIn = agedBrie.SellIn - 1;
+
+            if (agedBrie.SellIn >= 0)
+            {
+                agedBrie.Quality = IncreaseQualityByAmount(agedBrie, 1);
+            }
+            else
+            {
+                agedBrie.Quality = IncreaseQualityByAmount(agedBrie, 2);
+            }
+        }
+
+        private void UpdateBackstagePasses(Item backstagePasses)
+        {
+            if (backstagePasses.SellIn < 6)
+            {
+                backstagePasses.Quality = IncreaseQualityByAmount(backstagePasses, 3);
+            }
+            else if (backstagePasses.SellIn < 11)
+            {
+                backstagePasses.Quality = IncreaseQualityByAmount(backstagePasses, 2);
+            }
+            else if (backstagePasses.SellIn >= 11)
+            {
+                backstagePasses.Quality = IncreaseQualityByAmount(backstagePasses, 1);
+            }
+
+            backstagePasses.SellIn = backstagePasses.SellIn - 1;
+
+            if (backstagePasses.SellIn < 0)
+            {
+                backstagePasses.Quality = DecreaseQualityByAmount(backstagePasses, backstagePasses.Quality);
             }
         }
 
