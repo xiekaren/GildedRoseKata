@@ -13,13 +13,13 @@ namespace csharp
 
         private const int MaxItemQuality = 50;
         private const int MinItemQuality = 0;
-
+    
         public GildedRose(IList<Item> items)
         {
             this._items = items;
         }
+
         //TODO: Extract out degrade rate
-        //TODO: Extract out min and max quality
 
         public void UpdateQuality()
         {
@@ -53,18 +53,12 @@ namespace csharp
                     {
                         if (item.SellIn < 11)
                         {
-                            if (item.Quality < MaxItemQuality)
-                            {
-                                item.Quality = item.Quality + 1;
-                            }
+                            item.Quality = IncreaseQualityByAmount(item, 1);
                         }
 
                         if (item.SellIn < 6)
                         {
-                            if (item.Quality < MaxItemQuality)
-                            {
-                                item.Quality = item.Quality + 1;
-                            }
+                            item.Quality = IncreaseQualityByAmount(item, 1);
                         }
                     }
                 }
@@ -90,13 +84,21 @@ namespace csharp
                 }
                 else
                 {
-                    if (item.Quality < MaxItemQuality)
-                    {
-                        item.Quality = item.Quality + 1;
-                    }
+                    item.Quality = IncreaseQualityByAmount(item, 1);
                 }
             }
 
         }
+
+        private int IncreaseQualityByAmount(Item item, int amount)
+        {
+            return Math.Min(MaxItemQuality, item.Quality + amount);
+        }
+
+        private int DecreaseQualityByAmount(Item item, int amount)
+        {
+            return Math.Max(MinItemQuality, item.Quality - amount);
+        }
+
     }
 }
