@@ -38,7 +38,7 @@ namespace csharp
 
             if (item.Name != AgedBrie && item.Name != BackstagePasses)
             {
-                if (item.Quality > 0)
+                if (item.Quality > MinItemQuality)
                 {
                     item.Quality = item.Quality - 1;
                 }
@@ -78,7 +78,7 @@ namespace csharp
                 {
                     if (item.Name != BackstagePasses)
                     {
-                        if (item.Quality > 0)
+                        if (item.Quality > MinItemQuality)
                         {
                             item.Quality = item.Quality - 1;
                         }
