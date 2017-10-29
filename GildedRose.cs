@@ -13,7 +13,7 @@ namespace csharp
 
         private const int MaxItemQuality = 50;
         private const int MinItemQuality = 0;
-    
+
         public GildedRose(IList<Item> items)
         {
             this._items = items;
@@ -36,7 +36,22 @@ namespace csharp
                 return;
             }
 
-            if (item.Name != AgedBrie && item.Name != BackstagePasses)
+            if (item.Name == AgedBrie)
+            {
+                item.SellIn = item.SellIn - 1;
+
+                if (item.SellIn >= 0)
+                {
+                    item.Quality = IncreaseQualityByAmount(item, 1);
+                }
+                else
+                {
+                    item.Quality = IncreaseQualityByAmount(item, 2);
+                }
+                return;
+            }
+
+            if (item.Name != BackstagePasses)
             {
                 item.Quality = DecreaseQualityByAmount(item, 1);
             }
@@ -65,20 +80,13 @@ namespace csharp
 
             if (item.SellIn < 0)
             {
-                if (item.Name != AgedBrie)
+                if (item.Name != BackstagePasses)
                 {
-                    if (item.Name != BackstagePasses)
-                    {
-                        item.Quality = DecreaseQualityByAmount(item, 1);
-                    }
-                    else
-                    {
-                        item.Quality = item.Quality - item.Quality;
-                    }
+                    item.Quality = DecreaseQualityByAmount(item, 1);
                 }
                 else
                 {
-                    item.Quality = IncreaseQualityByAmount(item, 1);
+                    item.Quality = DecreaseQualityByAmount(item, item.Quality);
                 }
             }
 
