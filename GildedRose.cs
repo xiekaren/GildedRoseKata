@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace csharp
 {
@@ -9,6 +10,9 @@ namespace csharp
         private const string Sulfuras = "Sulfuras, Hand of Ragnaros";
         private const string AgedBrie = "Aged Brie";
         private const string BackstagePasses = "Backstage passes to a TAFKAL80ETC concert";
+
+        private const int MaxItemQuality = 50;
+        private const int MinItemQuality = 0;
 
         public GildedRose(IList<Item> items)
         {
@@ -41,7 +45,7 @@ namespace csharp
             }
             else
             {
-                if (item.Quality < 50)
+                if (item.Quality < MaxItemQuality)
                 {
                     item.Quality = item.Quality + 1;
 
@@ -49,7 +53,7 @@ namespace csharp
                     {
                         if (item.SellIn < 11)
                         {
-                            if (item.Quality < 50)
+                            if (item.Quality < MaxItemQuality)
                             {
                                 item.Quality = item.Quality + 1;
                             }
@@ -57,7 +61,7 @@ namespace csharp
 
                         if (item.SellIn < 6)
                         {
-                            if (item.Quality < 50)
+                            if (item.Quality < MaxItemQuality)
                             {
                                 item.Quality = item.Quality + 1;
                             }
@@ -86,7 +90,7 @@ namespace csharp
                 }
                 else
                 {
-                    if (item.Quality < 50)
+                    if (item.Quality < MaxItemQuality)
                     {
                         item.Quality = item.Quality + 1;
                     }
