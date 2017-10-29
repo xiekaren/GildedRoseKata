@@ -70,12 +70,13 @@ namespace csharp
         }
 
         [Test]
-        public void NotChangeQualityIfItemIsSulfurasHandOfRagnaros()
+        public void NotChangeSulfurasHandOfRagnaros()
         {
-            IList<Item> items = new List<Item> { new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = 0, Quality = 80 } };
+            IList<Item> items = new List<Item> { new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = 1, Quality = 80 } };
             var app = new GildedRose(items);
             app.UpdateQuality();
             Assert.AreEqual(80, items[0].Quality);
+            Assert.AreEqual(1, items[0].SellIn);
         }
 
         [Test]
