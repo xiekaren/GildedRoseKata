@@ -75,45 +75,14 @@ namespace csharp
                 return;
             }
 
-            if (item.Name != BackstagePasses)
-            {
-                item.Quality = DecreaseQualityByAmount(item, 1);
-            }
-            else
-            {
-                if (item.Quality < MaxItemQuality)
-                {
-                    item.Quality = item.Quality + 1;
-
-                    if (item.Name == BackstagePasses)
-                    {
-                        if (item.SellIn < 11)
-                        {
-                            item.Quality = IncreaseQualityByAmount(item, 1);
-                        }
-
-                        if (item.SellIn < 6)
-                        {
-                            item.Quality = IncreaseQualityByAmount(item, 1);
-                        }
-                    }
-                }
-            }
+            item.Quality = DecreaseQualityByAmount(item, 1);
 
             item.SellIn = item.SellIn - 1;
 
             if (item.SellIn < 0)
             {
-                if (item.Name != BackstagePasses)
-                {
-                    item.Quality = DecreaseQualityByAmount(item, 1);
-                }
-                else
-                {
-                    item.Quality = DecreaseQualityByAmount(item, item.Quality);
-                }
+               item.Quality = DecreaseQualityByAmount(item, 1);
             }
-
         }
 
         private int IncreaseQualityByAmount(Item item, int amount)
