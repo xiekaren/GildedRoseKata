@@ -19,8 +19,6 @@ namespace csharp
             this._items = items;
         }
 
-        //TODO: Extract out degrade rate
-
         public void UpdateQuality()
         {
             foreach (var item in _items)
@@ -29,46 +27,26 @@ namespace csharp
             }
         }
 
-        private void UpdateQuality(Item item)
+        public void UpdateItem(Item item, ItemUpdater updater)
         {
-            if (item.Name == Sulfuras)
-            {
-                return;
-            }
-
-            if (item.Name == AgedBrie)
-            {
-                UpdateAgedBrie(item);
-                return;
-            }
-
-            if (item.Name == BackstagePasses)
-            {
-                UpdateBackstagePasses(item);
-                return;
-            }
-
-            item.Quality = DecreaseQualityByAmount(item, 1);
-
-            item.SellIn = item.SellIn - 1;
-
-            if (item.SellIn < 0)
-            {
-               item.Quality = DecreaseQualityByAmount(item, 1);
-            }
+            updater.Update(item);
         }
 
-        private void UpdateAgedBrie(Item agedBrie)
+        private void UpdateQuality(Item item)
         {
-            agedBrie.SellIn = agedBrie.SellIn - 1;
-
-            if (agedBrie.SellIn >= 0)
+            switch (item.Name)
             {
-                agedBrie.Quality = IncreaseQualityByAmount(agedBrie, 1);
-            }
-            else
-            {
-                agedBrie.Quality = IncreaseQualityByAmount(agedBrie, 2);
+                case Sulfuras:
+                    return;
+                case AgedBrie:
+                    UpdateItem(item, new AgedBrieUpdater());
+                    return;
+                case BackstagePasses:
+                    UpdateBackstagePasses(item);
+                    return;
+                default:
+                    UpdateOther(item);
+                    return;
             }
         }
 
@@ -92,6 +70,20 @@ namespace csharp
             if (backstagePasses.SellIn < 0)
             {
                 backstagePasses.Quality = DecreaseQualityByAmount(backstagePasses, backstagePasses.Quality);
+            }
+        }
+
+        private void UpdateOther(Item item)
+        {
+            item.SellIn = item.SellIn - 1;
+
+            if (item.SellIn >= 0)
+            {
+                item.Quality = DecreaseQualityByAmount(item, 1);
+            }
+            else
+            {
+                item.Quality = DecreaseQualityByAmount(item, 2);
             }
         }
 
