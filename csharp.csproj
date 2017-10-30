@@ -67,6 +67,7 @@
     <Compile Include="DefaultItemUpdater.cs" />
     <Compile Include="GildedRose.cs" />
     <Compile Include="GildedRoseShould.cs" />
+    <Compile Include="SpecialItemNames.cs" />
     <Compile Include="ItemUpdater.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="ItemUpdaterFactory.cs" />
