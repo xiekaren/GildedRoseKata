@@ -61,19 +61,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AgedBrieItemUpdater.cs" />
+    <Compile Include="Update\AgedBrie\AgedBrieItemUpdater.cs" />
     <Compile Include="ApprovalTest.cs" />
-    <Compile Include="BackstagePassesItemUpdater.cs" />
-    <Compile Include="DefaultItemUpdater.cs" />
-    <Compile Include="GildedRose.cs" />
-    <Compile Include="GildedRoseShould.cs" />
-    <Compile Include="SpecialItemNames.cs" />
-    <Compile Include="ItemUpdater.cs" />
-    <Compile Include="Item.cs" />
-    <Compile Include="ItemUpdaterFactory.cs" />
+    <Compile Include="Update\BackstagePasses\BackstagePassesItemUpdater.cs" />
+    <Compile Include="Update\Default\DefaultItemUpdater.cs" />
+    <Compile Include="App\GildedRose.cs" />
+    <Compile Include="App\GildedRoseShould.cs" />
+    <Compile Include="Item\SpecialItemNames.cs" />
+    <Compile Include="Update\ItemUpdater.cs" />
+    <Compile Include="Item\Item.cs" />
+    <Compile Include="Update\ItemUpdaterFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SulfurasItemUpdater.cs" />
+    <Compile Include="Update\Sulfuras\SulfurasItemUpdater.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
