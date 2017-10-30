@@ -7,15 +7,6 @@ namespace csharp
     public class GildedRoseShould
     {
         [Test]
-        public void NotChangeItemName()
-        {
-            IList<Item> items = new List<Item> { new Item { Name = "ItemName", SellIn = 0, Quality = 0 } };
-            var app = new GildedRose(items, new ItemUpdaterFactory());
-            app.UpdateItems();
-            Assert.AreEqual("ItemName", items[0].Name);
-        }
-
-        [Test]
         public void DegradeQualityByOneWhenSellByDateHasNotPassed()
         {
             IList<Item> items = new List<Item> { new Item { Name = "ItemName", SellIn = 1, Quality = 10 } };

@@ -9,7 +9,8 @@ namespace csharp
         {
             var items = GetItems();
             var app = new GildedRose(items, new ItemUpdaterFactory());
-            app.Run(30);
+            const int days = 30;
+            app.Run(days);
         }
 
         private static IList<Item> GetItems()

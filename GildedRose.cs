@@ -16,14 +16,10 @@ namespace csharp
 
         public void Run(int days)
         {
-            for (var i = 0; i <= days; i++)
+            for (var day = 0; day <= days; day++)
             {
-                Console.WriteLine("-------- day " + i + " --------");
-                Console.WriteLine("name, sellIn, quality");
-                foreach (var item in _items)
-                {
-                    Console.WriteLine($"{item.Name}, {item.SellIn}, {item.Quality}");
-                }
+                PrintHeader(day);
+                PrintItemProperties();
                 Console.WriteLine("");
                 UpdateItems();
             }
@@ -36,6 +32,20 @@ namespace csharp
                 var itemUpdater = _itemUpdaterFactory.GetUpdaterFor(item);
                 itemUpdater.Update(item);
             }
-        } 
+        }
+
+        private void PrintItemProperties()
+        {
+            foreach (var item in _items)
+            {
+                Console.WriteLine($"{item.Name}, {item.SellIn}, {item.Quality}");
+            }
+        }
+
+        private void PrintHeader(int day)
+        {
+            Console.WriteLine("-------- day " + day + " --------");
+            Console.WriteLine("name, sellIn, quality");
+        }
     }
 }
