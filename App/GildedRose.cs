@@ -5,38 +5,40 @@ namespace csharp
 {
     public class GildedRose
     {
-        private readonly IList<Item> _items;
         private readonly ItemUpdaterFactory _itemUpdaterFactory;
+        private readonly ItemCreator _itemCreator;
 
-        public GildedRose(IList<Item> items, ItemUpdaterFactory itemUpdaterFactory)
+        public GildedRose(ItemCreator itemCreator, ItemUpdaterFactory itemUpdaterFactory)
         {
-            _items = items;
+            _itemCreator = itemCreator;
             _itemUpdaterFactory = itemUpdaterFactory;
         }
 
         public void RunFor(int days)
         {
+            var items = _itemCreator.Create();
+
             for (var day = 0; day <= days; day++)
             {
                 PrintHeader(day);
-                PrintItemProperties();
+                PrintItemProperties(items);
                 Console.WriteLine("");
-                UpdateItems();
+                Update(items);
             }
         }
 
-        public void UpdateItems()
+        private void Update(IEnumerable<Item> items)
         {
-            foreach (var item in _items)
+            foreach (var item in items)
             {
                 var itemUpdater = _itemUpdaterFactory.GetUpdaterFor(item);
                 itemUpdater.Update(item);
             }
         }
 
-        private void PrintItemProperties()
+        private void PrintItemProperties(IEnumerable<Item> items)
         {
-            foreach (var item in _items)
+            foreach (var item in items)
             {
                 Console.WriteLine($"{item.Name}, {item.SellIn}, {item.Quality}");
             }

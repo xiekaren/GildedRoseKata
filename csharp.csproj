@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Item\ItemCreator.cs" />
     <Compile Include="Update\AgedBrie\AgedBrieItemUpdater.cs" />
     <Compile Include="ApprovalTest.cs" />
     <Compile Include="Update\AgedBrie\AgedBrieItemUpdaterShould.cs" />
@@ -69,7 +70,7 @@
     <Compile Include="Update\Default\DefaultItemUpdater.cs" />
     <Compile Include="App\GildedRose.cs" />
     <Compile Include="App\GildedRoseShould.cs" />
-    <Compile Include="Item\SpecialItemNames.cs" />
+    <Compile Include="Item\ItemNames.cs" />
     <Compile Include="Update\Default\DefaultUpdaterShould.cs" />
     <Compile Include="Update\ItemUpdater.cs" />
     <Compile Include="Item\Item.cs" />

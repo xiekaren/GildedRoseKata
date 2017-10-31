@@ -4,15 +4,15 @@
     {
         public ItemUpdater GetUpdaterFor(Item item)
         {
-            if (item.Name == SpecialItemNames.Sulfuras)
+            if (item.Name == ItemNames.Sulfuras)
             {
                 return new SulfurasItemUpdater();
             }
-            if (item.Name == SpecialItemNames.AgedBrie)
+            if (item.Name == ItemNames.AgedBrie)
             {
                 return new AgedBrieItemUpdater();
             }
-            if (item.Name == SpecialItemNames.BackstagePasses)
+            if (item.Name == ItemNames.BackstagePasses)
             {
                 return new BackstagePassesItemUpdater();
             }
