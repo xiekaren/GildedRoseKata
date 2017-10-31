@@ -14,7 +14,7 @@ namespace csharp
             _itemUpdaterFactory = itemUpdaterFactory;
         }
 
-        public void Run(int days)
+        public void RunFor(int days)
         {
             for (var day = 0; day <= days; day++)
             {
