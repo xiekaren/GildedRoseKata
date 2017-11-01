@@ -10,7 +10,7 @@ namespace csharp
     {
         private const int MaxItemQuality = 50;
         private const int MinItemQuality = 0;
-
+        
         public abstract void Update(Item item);
 
         protected int IncreaseQuality(Item item, int amount)

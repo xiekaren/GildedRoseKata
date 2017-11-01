@@ -16,7 +16,7 @@ namespace csharp.Update.Sulfuras
         [Test]
         public void NotChangeItem()
         {
-            var item = new Item {Name = ItemNames.Sulfuras, SellIn = 1, Quality = 80};
+            var item = new Item {Name = ItemName.Sulfuras, SellIn = 1, Quality = 80};
             _sulfurasItemUpdater.Update(item);
             Assert.AreEqual(80, item.Quality);
             Assert.AreEqual(1, item.SellIn);

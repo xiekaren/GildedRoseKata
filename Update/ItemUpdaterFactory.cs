@@ -4,17 +4,21 @@
     {
         public ItemUpdater GetUpdaterFor(Item item)
         {
-            if (item.Name == ItemNames.Sulfuras)
+            if (item.Name == ItemName.Sulfuras)
             {
                 return new SulfurasItemUpdater();
             }
-            if (item.Name == ItemNames.AgedBrie)
+            if (item.Name == ItemName.AgedBrie)
             {
                 return new AgedBrieItemUpdater();
             }
-            if (item.Name == ItemNames.BackstagePasses)
+            if (item.Name == ItemName.BackstagePasses)
             {
                 return new BackstagePassesItemUpdater();
+            }
+            if (item.Name == ItemName.ConjuredManaCake)
+            {
+                return new ConjuredItemUpdater();;
             }
             return new DefaultItemUpdater();
         }

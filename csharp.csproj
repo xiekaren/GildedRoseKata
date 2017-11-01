@@ -67,10 +67,12 @@
     <Compile Include="Update\AgedBrie\AgedBrieItemUpdaterShould.cs" />
     <Compile Include="Update\BackstagePasses\BackstagePassesItemUpdater.cs" />
     <Compile Include="Update\BackstagePasses\BackstagePassesItemUpdaterShould.cs" />
+    <Compile Include="Update\Conjured\ConjuredItemUpdater.cs" />
+    <Compile Include="Update\Conjured\ConjuredItemUpdaterShould.cs" />
     <Compile Include="Update\Default\DefaultItemUpdater.cs" />
     <Compile Include="App\GildedRose.cs" />
     <Compile Include="App\GildedRoseShould.cs" />
-    <Compile Include="Item\ItemNames.cs" />
+    <Compile Include="Item\ItemName.cs" />
     <Compile Include="Update\Default\DefaultUpdaterShould.cs" />
     <Compile Include="Update\ItemUpdater.cs" />
     <Compile Include="Item\Item.cs" />

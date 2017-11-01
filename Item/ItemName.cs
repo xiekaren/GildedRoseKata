@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace csharp
 {
-    public class ItemNames
+    public class ItemName
     {
         public const string Sulfuras = "Sulfuras, Hand of Ragnaros";
         public const string AgedBrie = "Aged Brie";
