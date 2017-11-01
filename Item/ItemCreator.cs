@@ -15,7 +15,7 @@ namespace csharp
                 new Item {Name = ItemName.BackstagePasses, SellIn = 15, Quality = 20},
                 new Item {Name = ItemName.BackstagePasses, SellIn = 10, Quality = 49},
                 new Item {Name = ItemName.BackstagePasses, SellIn = 5, Quality = 49},
-                new Item {Name = ItemName.ConjuredManaCake, SellIn = 3, Quality = 10}
+                new Item {Name = ItemName.ConjuredManaCake, SellIn = 3, Quality = 10},
             };
         }
     }
